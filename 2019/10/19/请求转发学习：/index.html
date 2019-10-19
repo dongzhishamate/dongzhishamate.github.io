@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>请求转发学习： | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="请求转发学习： 作用：实现多个servlet联动操作处理请求，这样避免代码冗余，让servlet的职责更加明确 123req.getRequestDispatcher(&quot;要转发的地址&quot;).forward(req,resp);地址：相对路径，直接写servlet的别名即可  特点： 浏览器只做一次请求，浏览器地址栏信息不改变  注意： 请求转发后直接return结束即可   request 对象的作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="请求转发学习：">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;19&#x2F;%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%9A&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="请求转发学习： 作用：实现多个servlet联动操作处理请求，这样避免代码冗余，让servlet的职责更加明确 123req.getRequestDispatcher(&quot;要转发的地址&quot;).forward(req,resp);地址：相对路径，直接写servlet的别名即可  特点： 浏览器只做一次请求，浏览器地址栏信息不改变  注意： 请求转发后直接return结束即可   request 对象的作">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-19T10:41:28.282Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -149,103 +152,226 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-请求转发学习：" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      请求转发学习：
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/19/%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%9A/" class="archive-article-date">
+
+        
+        <a href="/2019/10/19/%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%9A/" class="archive-article-date">
   	<time datetime="2019-10-19T10:52:25.253Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/19/%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%9A/">请求转发学习：</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="请求转发学习："><a href="#请求转发学习：" class="headerlink" title="请求转发学习："></a>请求转发学习：</h2><ul>
+<li><p>作用：实现多个servlet联动操作处理请求，这样避免代码冗余，让servlet的职责更加明确</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req.getRequestDispatcher(<span class="string">"要转发的地址"</span>).forward(req,resp);</span><br><span class="line"></span><br><span class="line">地址：相对路径，直接写servlet的别名即可</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特点：</p>
+<p>浏览器只做一次请求，浏览器地址栏信息不改变</p>
+</li>
+<li><p>注意：</p>
+<p>请求转发后直接return结束即可</p>
+</li>
+</ul>
+<h2 id="request-对象的作用域"><a href="#request-对象的作用域" class="headerlink" title="request 对象的作用域"></a>request 对象的作用域</h2><blockquote>
+<p>问题：使用请求转发后，不同Servlet之间怎么进行数据的共享呢?或者说数据怎么从一个Servlet流转给另一个Servlet呢？</p>
+<p>解决：使用request对象的作用域</p>
+</blockquote>
+<ul>
+<li>使用：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用：</span><br><span class="line">request.setAttribute(object name,Object value);</span><br><span class="line">request.getAttribute(Object obj);</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<ul>
+<li><p>作用：解决了一次请求内不同Servlet的数据（请求数据+其他数据）的共享问题</p>
+</li>
+<li><p>request对象的作用域：基于请求转发，浏览器进行一次请求中的所有Servlet共享</p>
+</li>
+<li><p>注意：使用Request对象进行数据流转，数据只在一次请求内有效 </p>
+</li>
+<li><p>特点：</p>
+<p>服务器创建</p>
+<p>每次请求都会创建</p>
+<p>生命周期一次请求</p>
+</li>
+</ul>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">问题：如果当前的请求，Servlet无法进行处理怎么办？如果使用的请求转发，造成表单数据重复提交怎么办？</span><br><span class="line">解决：使用重定向</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li><p>作用：解决了表单重复提交的问题，以及当前servlet无法处理的请求问题</p>
+</li>
+<li><p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.sendRedirect(String uri);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp.sendRedirect(<span class="string">"/login/main"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特点：</p>
+<p>两次请求，两个request对象</p>
+<p>浏览器地址信息改变</p>
+</li>
+<li><p>什么时候使用：</p>
+<p>如果请求中有表单数据，而数据有比较重要，不能重复提交，建议使用重定向；</p>
+<p>如果请求被Servlet接收后，无法进行处理，建议使重定向定位到可以处理的资源</p>
+</li>
+</ul>
+<h2 id="Cookie学习："><a href="#Cookie学习：" class="headerlink" title="Cookie学习："></a>Cookie学习：</h2><ul>
+<li><p>作用：解决了发送的不同请求数据的共享问题</p>
+</li>
+<li><p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建Cookie对象</span></span><br><span class="line">  </span><br><span class="line">Cookie c=<span class="keyword">new</span> Cookie(String name,Sring value);</span><br><span class="line">  </span><br><span class="line"><span class="comment">//设置Cookie的有效期</span></span><br><span class="line">  </span><br><span class="line">c.setMaxAge(<span class="number">3</span> *<span class="number">24</span> * <span class="number">3600</span>);<span class="comment">//设置有效期为三天</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//响应Cookie信息给客户端</span></span><br><span class="line">  </span><br><span class="line">  resp.addCookie(c);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>注意：</p>
+<p>一个Cookie对象存储一条数据，多条数据可以创建几个Cookie对象进行存储</p>
+</li>
+<li><p>特点：</p>
+<p>浏览器的数据存储技术</p>
+<p>存储的数据申明在服务器端</p>
+<p>临时存储：存储在浏览器的运行内存中，浏览器关闭即失效</p>
+<p>定时存储：设置了Cookie的有效期，存储在客户端的硬盘中，在有效期内符合路径要求的请求都会附带该信息</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/19/%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%AD%A6%E4%B9%A0%EF%BC%9A/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/18/my-second-blog/" class="archive-article-date">
-  	<time datetime="2019-10-18T03:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/18/my-second-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">my second blog</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/18/my-second-blog/">my second blog</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/16/hello-world/" class="archive-article-date">
-  	<time datetime="2019-10-16T15:08:37.177Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/16/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -268,8 +394,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
